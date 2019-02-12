@@ -1,6 +1,6 @@
 # v3-el-dashborad
 
-![](./screen-3.png)
+![](./screen.png)
 
 ## 初始化
 ```
