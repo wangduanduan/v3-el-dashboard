@@ -1,9 +1,9 @@
 <template>
   <div>
-    <el-tag v-for="tag in navTags" :key="tag" closable 
-    @close="closeTag(tag)"
-    @click="activeTag(tag)">
-      {{tag}}
+    <el-tag class="v3-tag" v-for="(tag, index) in tags" :key="tag.index" closable 
+    @close="closeTag(index)" :type="tag.tabType"
+    @click="activeTag(tag.index)">
+      {{tag.title}}
     </el-tag>
   </div>
 </template>
@@ -18,50 +18,53 @@
     name: 'TopNav',
     data() {
       return {
-        tags: [{
-            name: '标签一',
-            type: ''
-          },
-          {
-            name: '标签二',
-            type: 'success'
-          },
-          {
-            name: '标签三',
-            type: 'info'
-          },
-          {
-            name: '标签四',
-            type: 'warning'
-          },
-          {
-            name: '标签五',
-            type: 'danger'
-          }
-        ]
+        // tags: []
       }
     },
     watch: {
       '$route' (to, from) {
-        // log('to', to)
-        // log('from', from)
-        this.addCachedView(to)
+        log('to', to)
+        log('from', from)
+
+        if (to.meta.type === 'menu') {
+          this.addCachedView(to)
+        }
       }
     },
     computed: {
-      ...mapState(['navTags'])
+      tags () {
+        return this.$store.state.navTags.map((item) => {
+          return {
+            index: item.index,
+            title: item.title,
+            tabType: item.active ? 'success' : 'info',
+            active: item.active
+          }
+        })
+      }
     },
     methods: {
       addCachedView (view) {
         this.$store.dispatch('addNavTags', view)
       },
-      closeTag (tag) {
+      closeTag (index) {
+        let tagId = this.tags[index].index
+        // 关闭处于激活状态的tag, 此时要切换路由
+        if (this.tags[index].active) {
+          if (this.tags[index + 1]) {
+            this.activeTag(this.tags[index + 1].index)
+          } else if (this.tags[index - 1]) {
+            this.activeTag(this.tags[index - 1].index)
+          }
+        } 
+        
         this.$store.dispatch('removeOneNavTag', {
-          name: tag
+          index: tagId
         })
-        log('dispatch removeOneNavTag done')
-        let nextTag = this.navTags.length === 0 ? '/' : this.navTags[this.navTags.length - 1]
-        this.activeTag(nextTag)
+        // }
+        // log('dispatch removeOneNavTag done')
+        // let nextTag = this.navTags.length === 0 ? '/' : this.navTags[this.navTags.length - 1]
+        // this.activeTag(nextTag)
       },
       activeTag (tag) {
         this.$router.push(tag)
@@ -72,3 +75,9 @@
     }
   }
 </script>
+
+<style>
+.v3-tag {
+  cursor: pointer;
+}
+</style>

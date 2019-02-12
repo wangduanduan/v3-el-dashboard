@@ -1,45 +1,56 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from './views/Home.vue'
+
 import menus from './config/menu-config'
+import Layout from './views/Layout'
 
 Vue.use(Router)
 
-var routes = []
+var routes = [{
+  path: '/Login',
+  name: 'Login',
+  component: () => import('./views/Login')
+}]
 
-routes.push({
-  path: '/',
-  redirect: {
-    name: 'BasicLayout'
-  }
-})
+// routes.push({
+//   path: '/Home',
+//   name: 'Layout',
+//   component: Layout,
+//   children: [
+//     {
+//       path: 'BasicLayout',
+//       name: 'BasicLayout',
+//       component: () => import('./components/BasicLayout')
+//     }
+//   ]
+// })
+
+let LayoutChildren = []
 
 menus.forEach((item) => {
-  item.sub.forEach((sub) => {
-    routes.push({
-      path: `/${sub.name}`,
-      name: sub.name,
-      component: () => import(`./components/${sub.name}`)
+  item.sub.forEach((cell) => {
+    LayoutChildren.push({
+      path: cell.name,
+      name: cell.name,
+      meta: cell.meta,
+      component: () => import(`./components/${cell.name}`)
     })
   })
 })
 
-export default new Router({routes})
 
-// export default new Router({
-//   routes: [
-//     {
-//       path: '/',
-//       name: 'home',
-//       component: Home
-//     },
-//     {
-//       path: '/about',
-//       name: 'about',
-//       // route level code-splitting
-//       // this generates a separate chunk (about.[hash].js) for this route
-//       // which is lazy-loaded when the route is visited.
-//       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-//     }
-//   ]
-// })
+routes.push({
+  path: '/Home',
+  name: 'Layout',
+  component: Layout,
+  children: LayoutChildren
+  // children: menus.map((item) => {
+  //   return {
+  //     path: item.name,
+  //     name: item.name,
+  //     component: () => import(`./components/${item.name}`)
+  //   }
+  // })
+})
+
+export default new Router({routes})

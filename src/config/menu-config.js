@@ -1,22 +1,39 @@
+const base = 'Home'
+
 export default [{
   name: 'basic',
-  id: 'basic',
-  title: 'basic',
+  meta: {
+    title: '基本'
+  },
   sub: [{
     name: 'BasicLayout',
-    title: 'BasicLayout'
+    meta: {
+      index: `BasicLayout`,
+      title: '基本布局',
+      type: 'menu',
+      active: false
+    }
   }, {
     name: 'BasicContainer',
-    title: 'BasicContainer'
+    meta: {
+      index: `BasicContainer`,
+      title: '基本容器',
+      type: 'menu',
+      active: false
+    }
   }]
 }, {
   name: 'Form',
-  title: 'Form',
+  meta: {
+    title: '表单'
+  },
   sub: [{
     name: 'FormRadio',
-    title: 'FormRadio'
-  }, {
-    name: 'FormCheckbox',
-    title: 'FormCheckbox'
+    meta: {
+      index: `FormRadio`,
+      title: '单选按钮',
+      type: 'menu',
+      active: false
+    }
   }]
 }]
