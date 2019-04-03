@@ -26,7 +26,7 @@
     computed: {
       ...mapState(['isNavMenuOpen']),
       iconName () {
-        return this.isNavMenuOpen ? 'el-icon-d-arrow-left' : 'el-icon-d-arrow-right'
+        return this.isNavMenuOpen ? 'fa fa-outdent' : 'fa fa-indent'
       }
     }
   }
