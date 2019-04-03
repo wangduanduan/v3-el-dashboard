@@ -56,6 +56,8 @@
             this.activeTag(this.tags[index + 1].index)
           } else if (this.tags[index - 1]) {
             this.activeTag(this.tags[index - 1].index)
+          } else {
+            this.$router.push(`/Home`)
           }
         } 
         
