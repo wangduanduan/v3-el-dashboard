@@ -16,7 +16,7 @@
 
       <el-submenu v-for="item in menu" :index="item.name" :key="item.name" class="no-boarder">
         <template slot="title">
-          <i :class="item.meta.icon"></i>
+          <i :class="item.meta.icon"></i>&nbsp;&nbsp;
           <span v-text="item.meta.title"></span>
         </template>
         <el-menu-item-group class="over-hide" v-for="sub in item.sub" :key="sub.name">

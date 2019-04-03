@@ -4,7 +4,7 @@ export default [{
   name: 'basic',
   meta: {
     title: '基本',
-    icon: 'el-icon-location'
+    icon: 'fa fa-camera-retro'
   },
   sub: [{
     name: 'BasicLayout',
@@ -27,7 +27,7 @@ export default [{
   name: 'Form',
   meta: {
     title: '表单',
-    icon: 'el-icon-news'
+    icon: 'fa fa-bandcamp'
   },
   sub: [{
     name: 'FormRadio',
