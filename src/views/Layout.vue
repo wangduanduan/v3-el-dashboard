@@ -1,7 +1,7 @@
 <template>
   <div>
-      <div width="180px" class="v3-aside"> <NavMenu /> </div>
-      <div class="v3-main">
+      <NavMenu />
+      <div class="v3-main" :style="{'margin-left': isNavMenuOpen ? '200px': '64px'}">
         <div class="v3-header"> <Header /> </div>
         <div class="v3-tabs"> <TopNav /> </div>
         <el-main class="v3-content-main">
@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import NavMenu from '../components/NavMenu'
 import Header from '../components/Header'
 import TopNav from '../components/TopNav'
@@ -24,27 +24,20 @@ export default {
     NavMenu, Header, TopNav
   },
   computed: {
-    ...mapGetters(['navTagIndexs'])
+    ...mapGetters(['navTagIndexs']),
+    ...mapState(['isNavMenuOpen'])
   }
 }
 </script>
 
 <style scoped>
 .v3-header {
-  height: 48px;
+  height: 40px;
   border-bottom: 1px solid #eee;
   background: #fff
 }
-.v3-aside {
-  width: 180px;
-  position: fixed;
-  bottom: 0px;
-  top: 0px;
-  background: rgb(84, 92, 100);
-  overflow: hidden;
-}
 .v3-main {
-  margin-left: 180px;
+  margin-left: 200px;
 }
 .v3-content-main {
   background: #fff;

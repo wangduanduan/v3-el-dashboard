@@ -10,7 +10,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    navTags: []
+    navTags: [],
+    isNavMenuOpen: true
   },
   getters: {
     activeTag (state) {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    toggleMenuOpen (state, payload) {
+      state.isNavMenuOpen = !state.isNavMenuOpen
+    },
     addNavTags (state, view) {
       let index = findIndex(state.navTags, 'index', view.meta.index)
 

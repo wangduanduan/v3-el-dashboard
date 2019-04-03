@@ -1,12 +1,13 @@
 <template>
   <el-row>
     <el-col :span="24" class="header-wrap">
-    
+      <el-button :icon="iconName" @click="toggleMenuOpen"></el-button>
     </el-col>
   </el-row>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   export default {
     data() {
       return {
@@ -17,6 +18,15 @@
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      toggleMenuOpen () {
+        this.$store.commit('toggleMenuOpen')
+      }
+    },
+    computed: {
+      ...mapState(['isNavMenuOpen']),
+      iconName () {
+        return this.isNavMenuOpen ? 'el-icon-d-arrow-left' : 'el-icon-d-arrow-right'
       }
     }
   }
@@ -25,7 +35,7 @@
 
 <style scoped>
   .head-wrap {
-    height: 48px;
+    height: 40px;
     border-bottom: 1px solid #eee;
   }
 </style>

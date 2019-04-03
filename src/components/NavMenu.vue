@@ -1,8 +1,8 @@
 <template>
   <el-row class="tac">
-  <el-col :span="24">
+  <el-col :span="24" class="h100">
     <el-menu
-      class="no-boarder"
+      class="no-boarder el-menu-vertical-demo h100"
       router
       unique-opened
       @open="handleOpen"
@@ -10,6 +10,8 @@
       background-color="#545c64"
       text-color="#fff"
       :default-active="activeTag"
+      ref="mySidemenu"
+      :collapse="!isNavMenuOpen"
       active-text-color="#ffd04b">
 
       <el-submenu v-for="item in menu" :index="item.name" :key="item.name" class="no-boarder">
@@ -29,16 +31,22 @@
 </template>
 
 <style scoped>
-  .over-hide{
-    /* overflow: hidden; */
+  .h100{
+    height: 100%
   }
-  .no-boarder {
-    border: none
+  .tac{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    z-index: 999;
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
   }
 </style>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
   import menu from '../config/menu-config'
 
   export default {
@@ -48,7 +56,15 @@
       }
     },
     computed: {
-      ...mapGetters(['activeTag'])
+      ...mapGetters(['activeTag']),
+      ...mapState(['isNavMenuOpen'])
+    },
+    watch: {
+      activeTag: function (newValue, oldValue) {
+        setTimeout(() => {
+          this.$refs.mySidemenu.activeIndex = this.activeTag
+        }, 100);
+      }
     },
     methods: {
       handleOpen (key, keyPath) {
