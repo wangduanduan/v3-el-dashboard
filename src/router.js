@@ -6,27 +6,18 @@ import Layout from './views/Layout'
 
 Vue.use(Router)
 
-var routes = [{
-  path: '/Login',
+const routes = []
+
+
+// 登录路由
+routes.push({
+  path: '/',
   name: 'Login',
   component: () => import('./views/Login')
-}]
+})
 
-// routes.push({
-//   path: '/Home',
-//   name: 'Layout',
-//   component: Layout,
-//   children: [
-//     {
-//       path: 'BasicLayout',
-//       name: 'BasicLayout',
-//       component: () => import('./components/BasicLayout')
-//     }
-//   ]
-// })
-
+// 侧边栏二级菜单路由
 let LayoutChildren = []
-
 menus.forEach((item) => {
   item.sub.forEach((cell) => {
     LayoutChildren.push({
@@ -38,19 +29,12 @@ menus.forEach((item) => {
   })
 })
 
-
+// 侧边栏菜单路由
 routes.push({
   path: '/Home',
   name: 'Layout',
   component: Layout,
   children: LayoutChildren
-  // children: menus.map((item) => {
-  //   return {
-  //     path: item.name,
-  //     name: item.name,
-  //     component: () => import(`./components/${item.name}`)
-  //   }
-  // })
 })
 
 export default new Router({routes})

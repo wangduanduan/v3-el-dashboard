@@ -3,12 +3,13 @@ const base = 'Home'
 export default [{
   name: 'basic',
   meta: {
-    title: '基本'
+    title: '基本',
+    icon: 'el-icon-location'
   },
   sub: [{
     name: 'BasicLayout',
     meta: {
-      index: `BasicLayout`,
+      index: `/Home/BasicLayout`,
       title: '基本布局',
       type: 'menu',
       active: false
@@ -16,7 +17,7 @@ export default [{
   }, {
     name: 'BasicContainer',
     meta: {
-      index: `BasicContainer`,
+      index: `/Home/BasicContainer`,
       title: '基本容器',
       type: 'menu',
       active: false
@@ -25,12 +26,13 @@ export default [{
 }, {
   name: 'Form',
   meta: {
-    title: '表单'
+    title: '表单',
+    icon: 'el-icon-news'
   },
   sub: [{
     name: 'FormRadio',
     meta: {
-      index: `FormRadio`,
+      index: `/Home/FormRadio`,
       title: '单选按钮',
       type: 'menu',
       active: false
