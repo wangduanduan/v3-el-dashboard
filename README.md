@@ -6,6 +6,7 @@ if you want a default page or router, you can add it by yourself。i believe you
 
 if you want a completed dashborad, maybe you should see https://github.com/PanJiaChen/vue-element-admin
 
+![](./login.jpg)
 ![](./screen.png)
 
 ## 初始化

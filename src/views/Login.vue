@@ -5,10 +5,10 @@
       <h1>V3 Admin</h1>
       <el-form ref="form" :model="form" class="z-depth-2">
         <el-form-item>
-          <el-input v-model="form.username" placeholder="邮箱"></el-input>
+          <el-input v-model="form.username" placeholder="email"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.password" placeholder="密码" type="password"></el-input>
+          <el-input v-model="form.password" placeholder="password" type="password"></el-input>
         </el-form-item>
         <el-form-item style="text-align:right;">
           <el-button type="primary">登录</el-button>
