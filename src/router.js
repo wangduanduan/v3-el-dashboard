@@ -32,7 +32,7 @@ menus.forEach((item) => {
 // 侧边栏菜单路由
 routes.push({
   path: '/Home',
-  name: 'Layout',
+  name: 'Home',
   component: Layout,
   children: LayoutChildren
 })

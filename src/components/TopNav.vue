@@ -23,12 +23,11 @@
     },
     watch: {
       '$route' (to, from) {
+        console.log(to, from)
         log('to', to)
         log('from', from)
 
-        if (to.meta.type === 'menu') {
-          this.addCachedView(to)
-        }
+        this.addCachedView(to)
       }
     },
     computed: {
@@ -45,7 +44,9 @@
     },
     methods: {
       addCachedView (view) {
-        this.$store.dispatch('addNavTags', view)
+        if (view.meta.type === 'menu') {
+          this.$store.dispatch('addNavTags', view)
+        }
       },
       closeTag (index) {
         let tagId = this.tags[index].index

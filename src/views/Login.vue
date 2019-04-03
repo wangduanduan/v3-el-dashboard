@@ -11,7 +11,7 @@
           <el-input v-model="form.password" placeholder="password" type="password"></el-input>
         </el-form-item>
         <el-form-item style="text-align:right;">
-          <el-button type="primary">登录</el-button>
+          <el-button type="primary" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
     </el-main>
@@ -28,6 +28,11 @@
           username: '',
           password: ''
         }
+      }
+    },
+    methods: {
+      login () {
+        this.$router.push('/Home')
       }
     }
   }
