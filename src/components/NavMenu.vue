@@ -61,9 +61,9 @@
     },
     watch: {
       activeTag: function (newValue, oldValue) {
-        setTimeout(() => {
+        this.$nextTick(() => {
           this.$refs.mySidemenu.activeIndex = this.activeTag
-        }, 100);
+        })
       }
     },
     methods: {

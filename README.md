@@ -1,4 +1,13 @@
-# v3-el-dashborad
+<!-- TOC -->
+
+- [1. v3-el-dashborad](#1-v3-el-dashborad)
+  - [1.1. 初始化](#11-初始化)
+  - [1.2. 改进](#12-改进)
+  - [1.3. 增加多标签页来控制控制路由](#13-增加多标签页来控制控制路由)
+
+<!-- /TOC -->
+
+# 1. v3-el-dashborad
 
 the v3-el-dashborad is just a demo, and very easy to learn。But no default page or default router。
 
@@ -9,7 +18,7 @@ if you want a completed dashborad, maybe you should see https://github.com/PanJi
 ![](./login.jpg)
 ![](./screen.png)
 
-## 初始化
+## 1.1. 初始化
 ```
 yarn install
 yarn run serve
@@ -18,14 +27,14 @@ go to http://localhost:8080/#/Home/BasicLayout
 go to http://localhost:8080/#/Home/BasicContainer
 go to http://localhost:8080/#/Home/FormRadio
 ```
-## 改进
+## 1.2. 改进
 
 - 使用vue-cli 3x
 - 使用vuex
 - 增加多标签页来控制控制路由
 
 
-## 增加多标签页来控制控制路由
+## 1.3. 增加多标签页来控制控制路由
 
 1. 使用keep-alive
 2. 使用keep-alive include属性来指明哪些页面需要缓存
