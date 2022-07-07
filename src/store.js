@@ -22,7 +22,7 @@ export default new Vuex.Store({
     },
     navTagIndexs (state) {
       return state.navTags.map((item) => {
-        return item.index
+        return item.name
       })
     }
   },
@@ -41,6 +41,7 @@ export default new Vuex.Store({
         state.navTags.push({
           index: view.meta.index,
           title: view.meta.title,
+          name: view.name,
           active: true
         })
       } else {
